@@ -1,13 +1,11 @@
 
 import re
 
-NUMBER_REGEX_OPTIMIZED = r'\b\d+(?:\.\d+)?\b'
+NUMBER_REGEX = r"(?<=\s)\d+(?:\.\d+)?(?=\s)"
 
 
 def generator_numbers(text):
-    for match in re.finditer(NUMBER_REGEX_OPTIMIZED, text):
-        number_str = match.group(0)
-
+    for number_str in re.findall(NUMBER_REGEX, text):
         yield float(number_str)
 
 
